@@ -1,5 +1,28 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+<div class="ember-octane-battleship">
+  <header>
+    <nav class="flex items-center justify-between flex-wrap bg-blue-700 p-6">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <span class="font-semibold text-xl tracking-tight">Octane Battleship</span>
+      </div>
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <div class="text-md lg:flex-grow">
+          <LinkTo @route="index" class="block mt-4 inline-block lg:mt-0 text-black-200 hover:text-white mr-4 text-center">
+            Home
+          </LinkTo>
+          <LinkTo @route="test-placement" class="block mt-4 inline-block lg:mt-0 text-black-200 hover:text-white mr-4 text-center">
+            Test Placement
+          </LinkTo>
+          <LinkTo @route="new-game" class="block mt-4 inline-block lg:mt-0 text-black-200 hover:text-white text-center">
+            New Game
+          </LinkTo>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="container mx-auto px-16">
+    {{outlet}}
+  </main>
+  <footer>
+    {{!-- <p>Made by Lennex</p> --}}
+  </footer>
+</div>

@@ -1,0 +1,20 @@
+<div class="py-4">
+  <button {{on "click" this.reset}}
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+    Reset
+  </button>
+</div>
+
+<div class="pb-20 flex justify-center">
+  <table class="text-left border-collapse" {{did-insert this.createBoard}}>
+    <tbody>
+      {{#each this.cells as |data|}}
+        <tr>
+          {{#each data as |cell|}}
+            <GameCell @cell={{cell}} @muskCell={{@muskCells}} />
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

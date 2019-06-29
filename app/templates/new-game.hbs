@@ -1,0 +1,7 @@
+<div class="bg-gray-200 px-4">
+  <GameData @model={{this.model.game}} @boardSize={{this.model.boardSize}} as |boardSize ships players|>
+    {{#each players as |player|}}
+      <GameBoard @player={{player}} @muskCells={{true}} @ships={{ships}} @boardSize={{boardSize}}/>
+    {{/each}}
+  </GameData>
+</div>

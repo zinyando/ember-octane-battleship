@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { A } from '@ember/array';
 
 export default class GameBoard extends Component {
   @service() store;
@@ -45,7 +44,7 @@ export default class GameBoard extends Component {
 
   setShipOnBoard(ship, board) {
     let shipPosition = this.getRandomNumber(10);
-    let shipCells = [];   
+    let shipCells = [];
 
     for (let row of board) {
       for(let cell of row) {
@@ -71,13 +70,11 @@ export default class GameBoard extends Component {
       selectedShipCells = shipCells.slice(shipStart, shipEnd);
     }
 
-    // if(selectedShipCells && selectedShipCells.length > 0) {
-      let hasShip = selectedShipCells.filterBy('hasShip', true);
+    let hasShip = selectedShipCells.filterBy('hasShip', true);
 
-      if(hasShip.length > 0) {
-        return this.setShipOnBoard(ship, board);
-      }
-    // }
+    if(hasShip.length > 0) {
+      return this.setShipOnBoard(ship, board);
+    }
 
     selectedShipCells && selectedShipCells.forEach((cell) => {
       cell.setProperties({
@@ -88,6 +85,6 @@ export default class GameBoard extends Component {
   }
   
   getRandomNumber(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+    return Math.floor(Math.random() * (max - 1) + 1);
   }
 }

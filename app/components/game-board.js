@@ -21,11 +21,11 @@ export default class GameBoard extends Component {
   }
 
   @action createBoard() {
-    let boardCells = this.args.player.cells;
+    let playerCells = this.args.player.cells;
     
     let board = [];
     for(let i = 1; i <= this.args.boardSize; i++) {
-      let cells = boardCells.filterBy('row', i);
+      let cells = playerCells.filterBy('row', i);
       let row = [];
 
       cells.forEach((cell) => {
@@ -43,8 +43,11 @@ export default class GameBoard extends Component {
   }
 
   setShipOnBoard(ship, board) {
-    let shipPosition = this.getRandomNumber(10);
+    let shipPosition = this.getRandomNumber(1, 10);
     let shipCells = [];
+    let selectedShipCells;
+    let shipStart = shipPosition;
+    let shipEnd = shipPosition + ship.size;
 
     for (let row of board) {
       for(let cell of row) {
@@ -57,11 +60,6 @@ export default class GameBoard extends Component {
         }
       }
     }
-
-    let selectedShipCells;
-
-    let shipStart = shipPosition;
-    let shipEnd = shipPosition + ship.size;
 
     if(shipEnd > this.args.boardSize) {
       let diff = shipEnd - this.args.boardSize;
@@ -76,7 +74,7 @@ export default class GameBoard extends Component {
       return this.setShipOnBoard(ship, board);
     }
 
-    selectedShipCells && selectedShipCells.forEach((cell) => {
+    selectedShipCells.forEach((cell) => {
       cell.setProperties({
         hasShip: true,
         shipName: ship.name
@@ -84,7 +82,7 @@ export default class GameBoard extends Component {
     });
   }
   
-  getRandomNumber(max) {
-    return Math.floor(Math.random() * (max - 1) + 1);
+  getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
   }
 }

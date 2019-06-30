@@ -11,9 +11,8 @@ export default class GameDataComponent extends Component {
       size: 5,
       orientation: 'vertical',
       hits: 0,
-      position: [],
       get isSunk() {
-        return this.hits >= this.length;
+        return this.hits >= this.size;
       }
     },
     {
@@ -21,9 +20,8 @@ export default class GameDataComponent extends Component {
       size: 4,
       orientation: 'vertical',
       hits: 0,
-      position: [],
       get isSunk() {
-        return this.hits >= this.length;
+        return this.hits >= this.size;
       }
     },
     {
@@ -31,9 +29,8 @@ export default class GameDataComponent extends Component {
       size: 3,
       orientation: 'vertical',
       hits: 0,
-      position: [],
       get isSunk() {
-        return this.hits >= this.length;
+        return this.hits >= this.size;
       }
     },
     {
@@ -41,9 +38,8 @@ export default class GameDataComponent extends Component {
       size: 2,
       orientation: 'horizontal',
       hits: 0,
-      position: [],
       get isSunk() {
-        return this.hits >= this.length;
+        return this.hits >= this.size;
       }
     },
     {
@@ -51,9 +47,8 @@ export default class GameDataComponent extends Component {
       size: 4,
       orientation: 'horizontal',
       hits: 0,
-      position: [],
       get isSunk() {
-        return this.hits >= this.length;
+        return this.hits >= this.size;
       }
     },
     {
@@ -61,9 +56,8 @@ export default class GameDataComponent extends Component {
       size: 5,
       orientation: 'horizontal',
       hits: 0,
-      position: [],
       get isSunk() {
-        return this.hits >= this.length;
+        return this.hits >= this.size;
       }
     },
   ]
